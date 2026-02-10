@@ -3,6 +3,16 @@
    Sophisticated, refined, competitive
    ======================================== */
 
+/* Android Chrome Rendering Fixes */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
 :root {
     /* Premium Color Palette - Warm Light with Rich Accents */
     --color-primary: #C17817;           /* Rich amber/bronze */
@@ -182,6 +192,9 @@ img {
 .section {
     padding: var(--space-5xl) 0;
     position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: visible;
 }
 
 .section__title {
@@ -783,17 +796,26 @@ img {
 /* Projects */
 .projects {
     background: linear-gradient(180deg, var(--color-bg-secondary), var(--color-bg-primary));
+    position: relative;
+    z-index: 1;
 }
 
 .projects__grid {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr var(--space-3xl) 1fr;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3xl);
     margin-top: var(--space-4xl);
+    position: relative;
 }
 
 .projects__view-more {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     margin-top: var(--space-4xl);
 }
@@ -837,6 +859,9 @@ img {
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
+    /* Removed backdrop-filter for Android compatibility */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .project-card::before {
@@ -862,14 +887,22 @@ img {
 }
 
 .project-card__header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     margin-bottom: var(--space-xl);
     gap: var(--space-lg);
 }
 
 .project-card__title-group {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
 }
 
@@ -884,14 +917,21 @@ img {
 }
 
 .project-card__metrics {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-top: var(--space-sm);
 }
 
 .metric-badge {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding: 4px var(--space-sm);
     background: var(--color-bg-secondary);
@@ -905,6 +945,8 @@ img {
 }
 
 .metric-badge--primary {
+    background: -webkit-gradient(linear, left top, right bottom, from(rgba(193, 120, 23, 0.12)), to(rgba(193, 120, 23, 0.06)));
+    background: -o-linear-gradient(top left, rgba(193, 120, 23, 0.12), rgba(193, 120, 23, 0.06));
     background: linear-gradient(135deg, rgba(193, 120, 23, 0.12), rgba(193, 120, 23, 0.06));
     border-color: var(--color-primary);
     color: var(--color-primary-dark);
@@ -919,7 +961,12 @@ img {
 }
 
 .project-card__highlights {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     gap: var(--space-md);
     margin-bottom: var(--space-xl);
@@ -1263,7 +1310,15 @@ img {
     }
 
     .projects__grid {
+        -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+    
+    /* Android Chrome specific fix */
+    .project-card {
+        min-height: 1px;
+        width: 100%;
     }
 }
 
