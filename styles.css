@@ -365,7 +365,35 @@ img {
 }
 
 .hero__content {
-    max-width: 920px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4xl);
+}
+
+.hero__photo-section {
+    flex-shrink: 0;
+}
+
+.hero__photo {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 6px solid var(--color-bg-elevated);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-slow);
+}
+
+.hero__photo:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--color-primary);
+}
+
+.hero__text-section {
+    flex: 1;
+    max-width: 800px;
 }
 
 .hero__greeting {
@@ -762,6 +790,42 @@ img {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3xl);
     margin-top: var(--space-4xl);
+}
+
+.projects__view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-4xl);
+}
+
+.btn--view-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-3xl);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-base);
+}
+
+.btn--view-more:hover {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn--view-more svg {
+    transition: transform var(--transition-base);
+}
+
+.btn--view-more:hover svg {
+    transform: translateX(4px);
 }
 
 .project-card {
@@ -1251,6 +1315,21 @@ img {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    .hero__content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-3xl);
+    }
+
+    .hero__photo {
+        width: 240px;
+        height: 240px;
+    }
+
+    .hero__text-section {
+        max-width: 100%;
+    }
+
     .hero__value-props {
         grid-template-columns: 1fr;
         gap: var(--space-md);
@@ -1300,6 +1379,11 @@ img {
 
     .hero__headline-text {
         font-size: var(--font-size-lg);
+    }
+
+    .hero__photo {
+        width: 180px;
+        height: 180px;
     }
 
     .hero__roles {
